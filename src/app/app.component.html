@@ -1,6 +1,8 @@
 
 
 <main>
+  <header>
+    <a href="#">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 982 239"
@@ -46,8 +48,12 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
+    </a>
+        <ul>
+          @for (item of nav; track item.href)
+          {<li><a [routerLink]="item.href">{{item.title}}</a></li>}
+        </ul>
+      </header>
 </main>
-
 
 <router-outlet />

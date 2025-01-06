@@ -1,0 +1,18 @@
+<input type="text" [(ngModel)]="searchTerm" placeholder="Введите название фильма">
+<button (click)="searchMovie()">поиск</button>
+<button class="scroll-to-top" (click)="scrollToTop()" [class.visible]="showScrollToTop">
+    <div class="arrow"></div>
+</button>
+
+<div class="block">
+    @for(movie of movies; track movie.Title){
+        <article>
+        <p>{{movie.Year}}г.</p>
+        <img src={{movie.Poster}} alt="Постер фильма">
+        <header>
+            <h3>{{movie.Title}}</h3>
+        </header>
+    </article>
+    }
+
+</div>
