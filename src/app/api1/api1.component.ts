@@ -25,10 +25,29 @@ export class Api1Component {
   }
 
   
+
+  searchButtonMovie() {
+    if (this.loading) return;
+    this.loading = true;
+    this.movies = [];
+    this.page++;
+
+    
+    this.http.get(`https://www.omdbapi.com/?apikey=a2b07930&s=${this.searchTerm}&page=${this.page}`)
+      .subscribe({
+        next: (data: any) => {
+          this.movies = [...this.movies, ...data.Search];
+          this.loading = false;
+        }
+      })
+  }
+
   searchMovie() {
     if (this.loading) return;
     this.loading = true;
     this.page++;
+
+    
     this.http.get(`https://www.omdbapi.com/?apikey=a2b07930&s=${this.searchTerm}&page=${this.page}`)
       .subscribe({
         next: (data: any) => {
